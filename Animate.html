@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            background: linear-gradient(to right, red, yellow);
+            min-height: 100vh;
+
+        }
+        div.wrapper {
+            position: relative;
+            max-width: 1000px; 
+        }
+
+        h2 {
+            text-align: center;
+            position: relative;
+            top: 5px;
+            color: red;
+            font-family: 'Lucida Sans';
+            background: yellow; 
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 1em red;     
+        }
+
+        span {
+            font-weight: 300;
+            font-size: 2em;
+            color: red;
+            background: yellow;
+            width: max-content;
+            position: relative;
+            padding: 10px;    
+            border-radius: 10px;       
+        }
+    
+
+        
+
+
+        div.imageslides {
+            animation: loadImage 2s forwards;
+        }
+		
+
+
+        @keyframes loadImage {
+            0% {
+                clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+            }
+
+            100% {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+        }
+		
+		
+    </style>
+
+</head>
+<body>
+    <div class = wrapper>
+        <span>&copy;SetUp</span>
+        <h2>CLIP SHOW</h2>
+        <div class="imageslides">
+            <img src="./Triton_500_SE_lifestyle_1_BBY_Large.jpg" alt="first-image" style="width: 100%;">
+        </div>
+
+        <div class="imageslides">
+            <img src="./Triton_500_SE_lifestyle_2_BBY_Large.jpg" alt="second-image" style="width: 100%;">
+        </div>
+
+        <div class="imageslides">
+            <img src="./Triton_500_SE_lifestyle_3_BBY_Large.jpg" alt="third-image" style="width: 100%;">
+        </div>
+
+        <div class="imageslides">
+            <img src="./Triton_500_SE_lifestyle_4_BBY_Large.jpg" alt="third-image" style="width: 100%;">
+        </div>
+    </div>
+
+    <script>
+        let clipIndex = 0;
+        clipSlides();
+
+        function clipSlides() {
+			//var test = document.querySelector('.wrapper');
+            const slides = document.querySelectorAll('.imageslides');
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            };
+
+            clipIndex++;
+            if(clipIndex > slides.length) {
+                clipIndex = 1
+            }
+			
+
+
+            slides[clipIndex-1].style.display = "block";
+			
+
+            setTimeout(clipSlides, 2000);
+
+        };
+		
+		
+    </script>
+
+</body>
+</html>
